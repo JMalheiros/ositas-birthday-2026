@@ -1,8 +1,6 @@
 import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
-import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
-import { TanStackDevtools } from '@tanstack/react-devtools'
 
-import Header from '../components/Header'
+import { AuthGuard } from '../components/AuthGuard'
 
 import appCss from '../styles.css?url'
 
@@ -17,7 +15,7 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'TanStack Start Starter',
+        title: 'Osita A Gatinha',
       },
     ],
     links: [
@@ -38,19 +36,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <Header />
-        {children}
-        <TanStackDevtools
-          config={{
-            position: 'bottom-right',
-          }}
-          plugins={[
-            {
-              name: 'Tanstack Router',
-              render: <TanStackRouterDevtoolsPanel />,
-            },
-          ]}
-        />
+        <AuthGuard>
+          {children}
+        </AuthGuard>
         <Scripts />
       </body>
     </html>
