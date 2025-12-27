@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { createFileRoute } from '@tanstack/react-router'
 import TitleHeader from '@/components/TitleHeader'
 import ContentBody from '@/components/ContentBody'
@@ -5,7 +6,10 @@ import ContentBody from '@/components/ContentBody'
 export const Route = createFileRoute('/')({ component: App })
 
 function App() {
-
+    useEffect(() => {
+    console.log('App mounted');
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="min-h-screen
                     lg:bg-[url(/background.png)] bg-[url(/mobile-background.png)] bg-cover">
